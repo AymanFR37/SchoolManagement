@@ -1,0 +1,22 @@
+server:
+  port: 8092
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/gescolar
+    username: root
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    properties.hibernate.dialect: org.hibernate.dialect.MySQL8Dialect
+#  mvc:
+#    pathmatch:
+#      matching-strategy: ant_path_matcher
+logging:
+  level:
+    org.springframework.web: DEBUG
+    ma.mypfe.students: DEBUG
+    org.hibernate: ERROR
+
