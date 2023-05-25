@@ -10,5 +10,5 @@ import java.util.List;
 public interface GroupeMapper {
     GroupeEntity groupeDtoToGroupe(GroupeDTO groupeDTO);
     GroupeDTO groupeToGroupeDto(GroupeEntity groupeEntity);
-    List<GroupeEntity> groupesToGroupeDtos(List<GroupeDTO> groupeDTOS);
+    List<GroupeDTO> groupesToGroupeDtos(List<GroupeEntity> groupeEntities);
 }

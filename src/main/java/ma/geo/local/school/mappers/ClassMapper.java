@@ -11,4 +11,5 @@ public interface ClassMapper {
     ClassEntity classDtoToClass(ClassDTO classDTO);
     ClassDTO classToClassDto(ClassEntity classEntity);
     List<ClassEntity> classeDtosToClasses(List<ClassDTO> classDTOS);
+    List<ClassDTO> ClassesToClassesDtos(List<ClassEntity> classEntities);
 }

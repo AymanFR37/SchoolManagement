@@ -11,12 +11,12 @@ spring:
     hibernate:
       ddl-auto: create
     properties.hibernate.dialect: org.hibernate.dialect.MySQL8Dialect
-#  mvc:
-#    pathmatch:
-#      matching-strategy: ant_path_matcher
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 logging:
   level:
     org.springframework.web: DEBUG
-    ma.mypfe.students: DEBUG
+    ma.geo.local.school: DEBUG
     org.hibernate: ERROR
 

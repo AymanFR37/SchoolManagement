@@ -12,10 +12,13 @@ import ma.geo.local.school.repositories.ClasseRepository;
 import ma.geo.local.school.repositories.GroupeRepository;
 import ma.geo.local.school.repositories.StudentRepository;
 import org.mapstruct.factory.Mappers;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
 public class StudentServiceImp implements StudentService{
+    private final static Logger LOGGER = LoggerFactory.getLogger(StudentServiceImp.class);
 
     private StudentRepository studentRepository;
     private GroupeRepository groupeRepository;
@@ -34,17 +37,20 @@ public class StudentServiceImp implements StudentService{
 
     @Override
     public List<StudentDTO> getAllStudents() {
+        LOGGER.debug("start selectAll methode");
         return studentMapper.studentsToStudentDTOs(studentRepository.findAll());
     }
 
     @Override
     public StudentDTO getStudentById(int id) {
+        LOGGER.debug("start selectById methode :"+id);
         return studentMapper.studentToStudentDTO(
                 studentRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Student not found for this id :: " +id)));
     }
 
     @Override
     public List<StudentDTO> searchStudents(String lastName, String nomClass, String nomGrp) {
+        LOGGER.debug("start search methode");
         ClassDTO classe = classMapper.classToClassDto(classeRepository.findByNomClass(nomClass));
         GroupeDTO groupe = groupeMapper.groupeToGroupeDto(groupeRepository.findByNomGrp(nomGrp));
 
@@ -54,6 +60,7 @@ public class StudentServiceImp implements StudentService{
 
     @Override
     public StudentDTO createStudent(StudentDTO studentDTO) {
+        LOGGER.debug("start save methode dto :{}",studentDTO);
         String email = studentDTO.getEmail();
         if (studentRepository.existsByEmail(email)){
             throw new DuplicateRessourceException("email already taken");
@@ -64,6 +71,7 @@ public class StudentServiceImp implements StudentService{
 
     @Override
     public StudentDTO updateStudent(int id, StudentDTO studentDTO) {
+        LOGGER.debug("start update methode dto :{}",studentDTO);
         StudentDTO existStudent = studentMapper.studentToStudentDTO(studentRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Student with this id doesn't exist : "+id)));
         existStudent.setFirstName(studentDTO.getFirstName());
@@ -80,6 +88,7 @@ public class StudentServiceImp implements StudentService{
 
     @Override
     public void deleteStudentById(int id) {
+        LOGGER.debug("start delete methode");
         studentRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Student with this id doesn't exist : "+id));
         studentRepository.deleteById(id);
