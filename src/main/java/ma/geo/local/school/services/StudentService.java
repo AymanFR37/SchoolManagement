@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface StudentService {
     List<StudentDTO> getAllStudents();
-    StudentDTO getStudentById(Long id);
-    List<StudentDTO> searchStudents(String searchTerm);
+    StudentDTO getStudentById(int id);
+    List<StudentDTO> searchStudents(String lastName, String nomClass, String nomGrp);
     StudentDTO createStudent(StudentDTO studentDTO);
-    StudentDTO updateStudent(Long id, StudentDTO studentDTO);
-    void deleteStudent(Long id);
+    StudentDTO updateStudent(int id, StudentDTO studentDTO);
+    void deleteStudentById(int id);
 }

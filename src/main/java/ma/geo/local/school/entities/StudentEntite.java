@@ -1,24 +1,28 @@
-package ma.geo.local.school.dtos;
+package ma.geo.local.school.entities;
 
-
-
+import javax.persistence.*;
 import java.time.LocalDate;
 
-
-public class StudentDTO extends UserDTO {
+@Entity
+@Table(name = "student")
+public class StudentEntite extends UserEntity{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private LocalDate dateOfBirth;
     private String address;
-    private ClassDTO classe;
-    private GroupeDTO groupe;
+    @ManyToOne
+    private ClassEntity classe;
+    @ManyToOne
+    private GroupeEntity groupeEntity;
 
-    public StudentDTO(String firstName, String lastName, String email, String password, String sexe, int id, LocalDate dateOfBirth, String address, ClassDTO classe, GroupeDTO groupe) {
+    public StudentEntite(String firstName, String lastName, String email, String password, String sexe, int id, LocalDate dateOfBirth, String address, ClassEntity classe, GroupeEntity groupeEntity) {
         super(firstName, lastName, email, password, sexe);
         this.id = id;
         this.dateOfBirth = dateOfBirth;
         this.address = address;
         this.classe = classe;
-        this.groupe = groupe;
+        this.groupeEntity = groupeEntity;
     }
 
     public int getId() {
@@ -45,30 +49,30 @@ public class StudentDTO extends UserDTO {
         this.address = address;
     }
 
-    public ClassDTO getClasse() {
+    public ClassEntity getClasse() {
         return classe;
     }
 
-    public void setClasse(ClassDTO classe) {
-        this.classe = classe;
+    public void setClasse(ClassEntity classe) {
+        this.classe= classe;
     }
 
-    public GroupeDTO getGroupe() {
-        return groupe;
+    public GroupeEntity getGroupeEntity() {
+        return groupeEntity;
     }
 
-    public void setGroupe(GroupeDTO groupe) {
-        this.groupe = groupe;
+    public void setGroupeEntity(GroupeEntity groupeEntity) {
+        this.groupeEntity = groupeEntity;
     }
 
     @Override
     public String toString() {
-        return "StudentDTO{" +
+        return "StudentEntite{" +
                 "id=" + id +
                 ", dateOfBirth=" + dateOfBirth +
                 ", address='" + address + '\'' +
                 ", classe=" + classe +
-                ", groupe=" + groupe +
+                ", groupeEntity=" + groupeEntity +
                 '}';
     }
 }

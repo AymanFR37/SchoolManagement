@@ -3,7 +3,6 @@ package ma.geo.local.school.controllers;
 
 import ma.geo.local.school.dtos.StudentDTO;
 import ma.geo.local.school.services.StudentService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,42 +12,53 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/students")
 public class StudentController {
-    @Autowired
+
     private StudentService studentService;
 
-    @PostMapping//done
-    public ResponseEntity<StudentDTO> createStudent(@RequestBody StudentDTO studentDto) {
-        StudentDTO createdStudent = studentService.createStudent(studentDto);
-        return new ResponseEntity<>(createdStudent, HttpStatus.CREATED);
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
+    }
+    // Méthode pour créer un étudiant
+    @PostMapping
+    public ResponseEntity<StudentDTO> createStudent(@RequestBody StudentDTO studentDTO) {
+        StudentDTO student = studentService.createStudent(studentDTO);
+        return new ResponseEntity<>(student,HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")//done
-    public ResponseEntity<StudentDTO> updateStudent(@PathVariable Long id, @RequestBody StudentDTO studentDto) {
+    // Méthode pour modifier un étudiant
+    @PutMapping("/{id}")
+    public ResponseEntity<StudentDTO> updateStudent(@PathVariable int id, @RequestBody StudentDTO studentDto) {
         StudentDTO updatedStudent = studentService.updateStudent(id, studentDto);
         return ResponseEntity.ok(updatedStudent);
     }
 
-    @DeleteMapping("/{id}")//done
-    public ResponseEntity<Void> deleteStudent(@PathVariable Long id) {
-        studentService.deleteStudent(id);
+    // Méthode pour Supprimer un étudiant
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteStudent(@PathVariable("id") int id) {
+        studentService.deleteStudentById(id);
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping//done
+    // Méthode pour sélectionner toutes les étudiants
+    @GetMapping
     public ResponseEntity<List<StudentDTO>> getAllStudents() {
         List<StudentDTO> students = studentService.getAllStudents();
         return ResponseEntity.ok(students);
     }
 
-    @GetMapping("/{id}")//done
-    public ResponseEntity<StudentDTO> getStudentById(@PathVariable Long id) {
+    // Sélectionner un étudiant par son ID
+    @GetMapping("/{id}")
+    public ResponseEntity<StudentDTO> getStudentById(@PathVariable int id) {
         StudentDTO student = studentService.getStudentById(id);
         return ResponseEntity.ok(student);
     }
 
-    @GetMapping("/search/{name}")//done
-    public ResponseEntity<List<StudentDTO>> searchStudents(@PathVariable String name) {
-        List<StudentDTO> students = studentService.searchStudents(name);
+    //Sélectionner un étudiant par son lastName et nomClass et nomGrp
+    @GetMapping("search/{lastName}/{nomClass}/{nomGrp}")
+    public ResponseEntity<List<StudentDTO>> searchStudents(@RequestParam String lastName,
+                                                           @RequestParam String nomClass,
+                                                           @RequestParam String nomGrp) {
+        List<StudentDTO> students = studentService.searchStudents(lastName,nomClass,nomGrp);
         return ResponseEntity.ok(students);
     }
 }
