@@ -3,20 +3,20 @@ package ma.geo.local.school.dtos;
 import java.util.List;
 
 public class TeacherDTO extends UserDTO{
-    private int id;
+    private String id;
     private List<MatiereDTO> matiere;
 
-    public TeacherDTO(String firstName, String lastName, String email, String password, String sexe, int id, List<MatiereDTO> matiere) {
+    public TeacherDTO(String firstName, String lastName, String email, String password, String sexe, String id, List<MatiereDTO> matiere) {
         super(firstName, lastName, email, password, sexe);
         this.id = id;
         this.matiere = matiere;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
