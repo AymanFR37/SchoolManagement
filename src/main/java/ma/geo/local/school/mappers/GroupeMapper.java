@@ -11,4 +11,5 @@ public interface GroupeMapper {
     GroupeEntity groupeDtoToGroupe(GroupeDTO groupeDTO);
     GroupeDTO groupeToGroupeDto(GroupeEntity groupeEntity);
     List<GroupeDTO> groupesToGroupeDtos(List<GroupeEntity> groupeEntities);
+    List<GroupeEntity> groupeDtosToGroupes(List<GroupeDTO> groupeDTOS);
 }
