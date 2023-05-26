@@ -3,16 +3,17 @@ package ma.geo.local.school.dtos;
 
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 public class StudentDTO extends UserDTO {
     private int id;
     private LocalDate dateOfBirth;
     private String address;
-    private ClassDTO classe;
-    private GroupeDTO groupe;
+    private List<ClassDTO> classe;
+    private List<GroupeDTO> groupe;
 
-    public StudentDTO(String firstName, String lastName, String email, String password, String sexe, int id, LocalDate dateOfBirth, String address, ClassDTO classe, GroupeDTO groupe) {
+    public StudentDTO(String firstName, String lastName, String email, String password, String sexe, int id, LocalDate dateOfBirth, String address, List<ClassDTO> classe, List<GroupeDTO> groupe) {
         super(firstName, lastName, email, password, sexe);
         this.id = id;
         this.dateOfBirth = dateOfBirth;
@@ -45,19 +46,19 @@ public class StudentDTO extends UserDTO {
         this.address = address;
     }
 
-    public ClassDTO getClasse() {
+    public List<ClassDTO> getClasse() {
         return classe;
     }
 
-    public void setClasse(ClassDTO classe) {
+    public void setClasse(List<ClassDTO> classe) {
         this.classe = classe;
     }
 
-    public GroupeDTO getGroupe() {
+    public List<GroupeDTO> getGroupe() {
         return groupe;
     }
 
-    public void setGroupe(GroupeDTO groupe) {
+    public void setGroupe(List<GroupeDTO> groupe) {
         this.groupe = groupe;
     }
 

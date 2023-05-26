@@ -2,6 +2,7 @@ package ma.geo.local.school.entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "student")
@@ -11,18 +12,18 @@ public class StudentEntite extends UserEntity{
     private int id;
     private LocalDate dateOfBirth;
     private String address;
-    @ManyToOne
-    private ClassEntity classe;
-    @ManyToOne
-    private GroupeEntity groupeEntity;
+    @OneToMany
+    private List<ClassEntity> classe;
+    @OneToMany
+    private List<GroupeEntity> groupe;
 
-    public StudentEntite(String firstName, String lastName, String email, String password, String sexe, int id, LocalDate dateOfBirth, String address, ClassEntity classe, GroupeEntity groupeEntity) {
+    public StudentEntite(String firstName, String lastName, String email, String password, String sexe, int id, LocalDate dateOfBirth, String address, List<ClassEntity> classe, List<GroupeEntity> groupe) {
         super(firstName, lastName, email, password, sexe);
         this.id = id;
         this.dateOfBirth = dateOfBirth;
         this.address = address;
         this.classe = classe;
-        this.groupeEntity = groupeEntity;
+        this.groupe = groupe;
     }
 
     public int getId() {
@@ -49,20 +50,20 @@ public class StudentEntite extends UserEntity{
         this.address = address;
     }
 
-    public ClassEntity getClasse() {
+    public List<ClassEntity> getClasse() {
         return classe;
     }
 
-    public void setClasse(ClassEntity classe) {
-        this.classe= classe;
+    public void setClasse(List<ClassEntity> classe) {
+        this.classe = classe;
     }
 
-    public GroupeEntity getGroupeEntity() {
-        return groupeEntity;
+    public List<GroupeEntity> getGroupe() {
+        return groupe;
     }
 
-    public void setGroupeEntity(GroupeEntity groupeEntity) {
-        this.groupeEntity = groupeEntity;
+    public void setGroupe(List<GroupeEntity> groupe) {
+        this.groupe = groupe;
     }
 
     @Override
@@ -72,7 +73,7 @@ public class StudentEntite extends UserEntity{
                 ", dateOfBirth=" + dateOfBirth +
                 ", address='" + address + '\'' +
                 ", classe=" + classe +
-                ", groupeEntity=" + groupeEntity +
+                ", groupe=" + groupe +
                 '}';
     }
 }
