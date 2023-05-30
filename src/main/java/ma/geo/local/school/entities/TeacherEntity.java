@@ -1,9 +1,6 @@
 package ma.geo.local.school.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -11,7 +8,8 @@ import java.util.List;
 public class TeacherEntity extends UserEntity{
     @Id
     private String id;
-    @OneToMany//coté teacher : one matiere to many teachers //coté matiere : many teachers to one matiere
+    @OneToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST},fetch = FetchType.LAZY)
+    //coté teacher : one matiere to many teachers //coté matiere : many teachers to one matiere
     private List<MatiereEntity> matiere;
 
     public TeacherEntity(String firstName, String lastName, String email, String password, String sexe, String id, List<MatiereEntity> matiere) {

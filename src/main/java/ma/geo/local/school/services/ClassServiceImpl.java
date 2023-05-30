@@ -6,9 +6,11 @@ import ma.geo.local.school.exceptions.ResourceNotFoundException;
 import ma.geo.local.school.mappers.ClassMapper;
 import ma.geo.local.school.repositories.ClasseRepository;
 import org.mapstruct.factory.Mappers;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ClassServiceImpl implements ClassService {
     private ClasseRepository classeRepository;
 

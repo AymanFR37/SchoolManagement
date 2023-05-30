@@ -12,10 +12,15 @@ public class StudentEntite extends UserEntity{
     private int id;
     private LocalDate dateOfBirth;
     private String address;
-    @OneToMany//cote student : one class to many students //many students to one class
+    @OneToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST},fetch = FetchType.LAZY)
+    //cote student : one class to many students //many students to one class
     private List<ClassEntity> classe;
-    @OneToMany//cote student : one groupe to many students //many students to one groupe
+    @OneToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST},fetch = FetchType.LAZY)
+    //cote student : one groupe to many students //many students to one groupe
     private List<GroupeEntity> groupe;
+
+    public StudentEntite() {
+    }
 
     public StudentEntite(String firstName, String lastName, String email, String password, String sexe, int id, LocalDate dateOfBirth, String address, List<ClassEntity> classe, List<GroupeEntity> groupe) {
         super(firstName, lastName, email, password, sexe);

@@ -7,9 +7,11 @@ import ma.geo.local.school.exceptions.ResourceNotFoundException;
 import ma.geo.local.school.mappers.GroupeMapper;
 import ma.geo.local.school.repositories.GroupeRepository;
 import org.mapstruct.factory.Mappers;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class GroupeServiceImpl implements GroupeService{
     private GroupeRepository groupeRepository;
 

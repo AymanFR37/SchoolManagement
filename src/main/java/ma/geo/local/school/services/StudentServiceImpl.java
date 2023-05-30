@@ -14,18 +14,20 @@ import ma.geo.local.school.repositories.StudentRepository;
 import org.mapstruct.factory.Mappers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public class StudentServiceImp implements StudentService{
-    private final static Logger LOGGER = LoggerFactory.getLogger(StudentServiceImp.class);
-
+@Service
+public class StudentServiceImpl implements StudentService{
+    private final static Logger LOGGER = LoggerFactory.getLogger(StudentServiceImpl.class);
     private StudentRepository studentRepository;
     private GroupeRepository groupeRepository;
     private ClasseRepository classeRepository;
 
 
-    public StudentServiceImp(StudentRepository studentRepository, GroupeRepository groupeRepository, ClasseRepository classeRepository) {
+    public StudentServiceImpl(StudentRepository studentRepository, GroupeRepository groupeRepository, ClasseRepository classeRepository) {
         this.studentRepository = studentRepository;
         this.groupeRepository = groupeRepository;
         this.classeRepository = classeRepository;

@@ -1,5 +1,11 @@
 package ma.geo.local.school.entities;
 
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
+@Inheritance(strategy = InheritanceType.JOINED)
 public class UserEntity {
     private String firstName;
     private String lastName;
@@ -7,6 +13,8 @@ public class UserEntity {
     private String password;
     private String sexe;
 
+    public UserEntity() {
+    }
 
     public UserEntity(String firstName, String lastName, String email, String password, String sexe) {
         this.firstName = firstName;
