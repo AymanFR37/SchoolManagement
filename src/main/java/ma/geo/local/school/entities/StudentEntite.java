@@ -12,10 +12,10 @@ public class StudentEntite extends UserEntity{
     private int id;
     private LocalDate dateOfBirth;
     private String address;
-    @OneToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST},fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
     //cote student : one class to many students //many students to one class
     private List<ClassEntity> classe;
-    @OneToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST},fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
     //cote student : one groupe to many students //many students to one groupe
     private List<GroupeEntity> groupe;
 

@@ -9,6 +9,9 @@ public class SalleDTO {
         this.nomSalle = nomSalle;
     }
 
+    public SalleDTO() {
+    }
+
     public int getId() {
         return id;
     }

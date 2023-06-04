@@ -7,9 +7,10 @@ import ma.geo.local.school.exceptions.ResourceNotFoundException;
 import ma.geo.local.school.mappers.SalleMapper;
 import ma.geo.local.school.repositories.SalleRepository;
 import org.mapstruct.factory.Mappers;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class SalleServiceImpl implements SalleService{
     private SalleRepository salleRepository;
 

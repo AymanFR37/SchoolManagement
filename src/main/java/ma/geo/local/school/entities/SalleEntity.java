@@ -15,6 +15,9 @@ public class SalleEntity {
         this.nomSalle = nomSalle;
     }
 
+    public SalleEntity() {
+    }
+
     public int getId() {
         return id;
     }
