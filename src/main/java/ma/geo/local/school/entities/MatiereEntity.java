@@ -15,6 +15,9 @@ public class MatiereEntity {
         this.nomMatiere = nomMatiere;
     }
 
+    public MatiereEntity() {
+    }
+
     public int getId() {
         return id;
     }

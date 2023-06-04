@@ -15,6 +15,9 @@ public class ClassEntity {
         this.nomClass = nomClass;
     }
 
+    public ClassEntity() {
+    }
+
     public int getId() {
         return id;
     }

@@ -9,6 +9,9 @@ public class ClassDTO {
         this.nomClass = nomClass;
     }
 
+    public ClassDTO() {
+    }
+
     public int getId() {
         return id;
     }

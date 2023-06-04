@@ -8,7 +8,7 @@ import java.util.List;
 public class TeacherEntity extends UserEntity{
     @Id
     private String id;
-    @OneToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST},fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
     //coté teacher : one matiere to many teachers //coté matiere : many teachers to one matiere
     private List<MatiereEntity> matiere;
 
@@ -16,6 +16,9 @@ public class TeacherEntity extends UserEntity{
         super(firstName, lastName, email, password, sexe);
         this.id = id;
         this.matiere = matiere;
+    }
+
+    public TeacherEntity() {
     }
 
     public String getId() {

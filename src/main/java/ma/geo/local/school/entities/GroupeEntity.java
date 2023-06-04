@@ -1,6 +1,7 @@
 package ma.geo.local.school.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "groupe")
@@ -9,13 +10,16 @@ public class GroupeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nomGrp;
-    @ManyToOne
-    private ClassEntity classEntity;
+    @OneToMany(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
+    private List<ClassEntity> classe;
 
-    public GroupeEntity(int id, String nomGrp, ClassEntity classEntity) {
+    public GroupeEntity(int id, String nomGrp, List<ClassEntity> classe) {
         this.id = id;
         this.nomGrp = nomGrp;
-        this.classEntity = classEntity;
+        this.classe = classe;
+    }
+
+    public GroupeEntity() {
     }
 
     public int getId() {
@@ -34,12 +38,12 @@ public class GroupeEntity {
         this.nomGrp = nomGrp;
     }
 
-    public ClassEntity getClassEntity() {
-        return classEntity;
+    public List<ClassEntity> getClasse() {
+        return classe;
     }
 
-    public void setClassEntity(ClassEntity classEntity) {
-        this.classEntity = classEntity;
+    public void setClasse(List<ClassEntity> classe) {
+        this.classe = classe;
     }
 
     @Override
@@ -47,7 +51,7 @@ public class GroupeEntity {
         return "GroupeEntity{" +
                 "id=" + id +
                 ", nomGrp='" + nomGrp + '\'' +
-                ", classEntity=" + classEntity +
+                ", classEntity=" + classe +
                 '}';
     }
 }

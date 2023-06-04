@@ -9,6 +9,9 @@ public class MatiereDTO {
         this.nomMatiere = nomMatiere;
     }
 
+    public MatiereDTO() {
+    }
+
     public int getId() {
         return id;
     }

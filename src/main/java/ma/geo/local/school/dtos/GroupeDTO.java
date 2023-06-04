@@ -1,17 +1,20 @@
 package ma.geo.local.school.dtos;
 
 
-
+import java.util.List;
 
 public class GroupeDTO {
     private int id;
     private String nomGrp;
-    private ClassDTO classe;
+    private List<ClassDTO> classe;
 
-    public GroupeDTO(int id, String nomGrp, ClassDTO classe) {
+    public GroupeDTO(int id, String nomGrp, List<ClassDTO> classe) {
         this.id = id;
         this.nomGrp = nomGrp;
         this.classe = classe;
+    }
+
+    public GroupeDTO() {
     }
 
     public int getId() {
@@ -30,11 +33,11 @@ public class GroupeDTO {
         this.nomGrp = nomGrp;
     }
 
-    public ClassDTO getClasse() {
+    public List<ClassDTO> getClasse() {
         return classe;
     }
 
-    public void setClasse(ClassDTO classe) {
+    public void setClasse(List<ClassDTO> classe) {
         this.classe = classe;
     }
 
